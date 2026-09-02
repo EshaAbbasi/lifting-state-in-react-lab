@@ -1,7 +1,18 @@
-// src/components/BurgerStack/BurgerStack.jsx
+import Ingredient from '../Ingredient/Ingredient';
 
-const BurgerStack = (props) => {
-  return <ul>// map through props.ingredients</ul>;
+const IngredientList = ({ availableIngredients, addToBurger }) => {
+  return (
+    <ul>
+      {availableIngredients.map((ingredient, index) => (
+        <Ingredient
+          key={`${ingredient.name}-${index}`}
+          name={ingredient.name}
+          color={ingredient.color}
+          onAdd={() => addToBurger(ingredient)}
+        />
+      ))}
+    </ul>
+  );
 };
 
-export default BurgerStack;
+export default IngredientList;
